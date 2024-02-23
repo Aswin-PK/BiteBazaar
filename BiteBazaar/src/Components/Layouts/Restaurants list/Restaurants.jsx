@@ -1,6 +1,6 @@
 // import React from 'react'
 import { useState, useEffect } from "react";
-import details from "./data.js";
+import details from "../../../Services/data.js";
 import {
     Select,
     SelectContent,
@@ -29,19 +29,16 @@ function RestaurantCards() {
     <div className="">
       <div
         className="heading
-        text-xl font-bold mt-10
+        text-xl font-bold mt-6 lg:mt-10
         px-5 xl:px-[10rem]
         ">Top Restaurants in Bangalore
       </div>
-      <div
-        className={`filters sticky top-0 h-[4rem] w-full bg-white px-5 xl:px-[10rem] mb-4 z-20 flex items-center ${
-          scrollY > 100 && "shadow-md"
-        }`}
-      >
-        <ul className="flex items-center gap-3">
-          <li className="cursor-pointer">
+      <div className={`filters sticky top-0 h-[4rem] w-full bg-white px-0 xl:px-[10rem] mb-43 z-20 flex items-center 
+        ${scrollY > 100 && "shadow-md" }`} >
+        <ul className="flex items-center gap-3 overflow-x-scroll">
+          <li className="cursor-pointer ml-5 lg:ml-0">
             <Select>
-              <SelectTrigger className="px-4 h-[2rem] rounded-full flex gap-2">
+              <SelectTrigger className="text-[0.85rem] lg:text-base px-2 lg:px-4 w-[5.5rem] lg:w-auto h-[1.8rem] lg:h-[2rem] flex gap-2 rounded-full">
                 <SelectValue placeholder="Sort By" />
               </SelectTrigger>
               <SelectContent>
@@ -52,32 +49,32 @@ function RestaurantCards() {
               </SelectContent>
             </Select>
           </li>
-          <li className="px-4 py-[0.2rem] border rounded-full cursor-pointer">
+          <li className="text-[0.85rem] lg:text-base px-4 py-[0.2rem] border rounded-full cursor-pointer whitespace-nowrap">
             Fast Delivery
           </li>
-          <li className="px-4 py-[0.2rem] border rounded-full cursor-pointer">
+          <li className="text-[0.85rem] lg:text-base px-4 py-[0.2rem] border rounded-full cursor-pointer whitespace-nowrap">
             Rating 4.0+
           </li>
-          <li className="px-4 py-[0.2rem] border rounded-full cursor-pointer">
+          <li className="text-[0.85rem] lg:text-base px-4 py-[0.2rem] border rounded-full cursor-pointer whitespace-nowrap">
             Pure Veg
           </li>
-          <li className="px-4 py-[0.2rem] border rounded-full cursor-pointer">
+          <li className="text-[0.85rem] lg:text-base px-4 py-[0.2rem] mr-5 border rounded-full cursor-pointer whitespace-nowrap">
             Online Delivery
           </li>
         </ul>
       </div>
 
       <div className="item-grid 
-        px-5
-        xl:px-[10rem]
-        grid grid-cols-1 gap-3
-        xl:grid xl:grid-cols-4 xl:gap-8
+        px-5 grid grid-cols-1 gap-8
+        sm:grid sm:grid-cols-2 sm:gap-8
+        lg:grid lg:grid-cols-3 lg:gap-8
+        xl:grid xl:grid-cols-4 xl:gap-8 xl:px-[10rem]
       ">
         {details && details.length > 0
           ? details.map((item) => (
               <div className="group item-card cursor-pointer" key={item.id}>
                 <div className="img-box w-full relative overflow-hidden rounded-2xl
-                    h-[8rem]
+                    h-[11rem]
                     xl:h-[12rem]
                 ">
                   <div className="shadow absolute w-full h-full z-10
@@ -88,13 +85,13 @@ function RestaurantCards() {
                   "/>
                 </div>
 
-                <div className="content-box">
+                <div className="content-box flex flex-col py-1">
                   <div className="name-and-rating flex items-center justify-between">
-                    <h3>{item.name}</h3>
-                    <span>{item.rating} <i></i></span>
+                    <span className="font-bold text-lg lg:text-lg">{item.name}</span>
+                    <span className="px-2 text-white bg-green-500 rounded-sm">{item.rating} <i className="ri-star-fill"></i></span>
                   </div>
-                  <span>Price: {item.food_types}</span>
-                  <span>Rating: {item.location}</span>
+                  <span className="text-gray-400 text-sm lg:text-md">{item.food_types}</span>
+                  <span className="text-gray-400 text-sm lg:text-md">{item.location}</span>
                 </div>
               </div>
             ))

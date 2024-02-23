@@ -1,7 +1,7 @@
 import './App.css'
-import Footer from './Components/Footer/Footer'
-import NavBar from './Components/Navbar/NavBar'
-import RestaurantCards from './Components/RestaurantCards/Restaurants'
+import Footer from './Components/Layouts/Footer/Footer'
+import NavBar from './Components/Layouts/Navbar/NavBar'
+import RestaurantCards from './Components/Layouts/Restaurants list/Restaurants'
 
 function App() {
 
