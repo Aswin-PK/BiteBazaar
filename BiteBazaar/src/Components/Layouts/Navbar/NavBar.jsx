@@ -61,11 +61,10 @@ function NavBar() {
           </li>
 
           {/* Only visible in the bigger screen */}
-          <li className="hidden lg:block cursor-pointer hover:text-orange-600">About</li>
-          <li className="hidden lg:block cursor-pointer hover:text-orange-600">Menu</li>
-          <li className="hidden lg:block cursor-pointer hover:text-orange-600">Cart</li>
-          <li className="hidden lg:block cursor-pointer hover:text-orange-600 text-nowrap">Sign in</li>
-          <li className="hidden lg:block cursor-pointer hover:text-orange-600"><Button>Sign up</Button></li>
+          {/* <li className="hidden lg:block cursor-pointer hover:text-orange-600 whitespace-nowrap">About</li> */}
+          <li className="hidden lg:block cursor-pointer hover:text-orange-600 whitespace-nowrap"><i className="ri-shopping-cart-2-line"></i> Cart</li>
+          <li className="hidden lg:block cursor-pointer hover:text-orange-600 whitespace-nowrap text-nowrap"><i className="ri-login-circle-line"></i> Sign in</li>
+          <li className="hidden lg:block cursor-pointer hover:text-orange-600 whitespace-nowrap"><Button>Sign up</Button></li>
         </ul>
       </div>
 

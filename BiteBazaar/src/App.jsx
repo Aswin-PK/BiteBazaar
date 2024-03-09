@@ -1,15 +1,20 @@
 import './App.css'
-import Footer from './Components/Layouts/Footer/Footer'
+// import Footer from './Components/Layouts/Footer/Footer'
 import NavBar from './Components/Layouts/Navbar/NavBar'
-import RestaurantCards from './Components/Layouts/Restaurants list/Restaurants'
+// import RestaurantDetails from './Components/Pages/Detailed View/Restaurant Page/RestaurantDetails'
+import Home from './Components/Pages/Home/home'
 
 function App() {
 
   return (
     <>
       <NavBar />
-      <RestaurantCards />
-      <Footer />
+      <Home />
+
+      
+      {/* <RestaurantDetails restaurant_detail /> */}
+      
+      {/* <Footer /> */}
     </>
   )
 }
