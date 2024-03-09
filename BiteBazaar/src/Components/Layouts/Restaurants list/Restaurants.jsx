@@ -1,6 +1,5 @@
-// import React from 'react'
-import { useState, useEffect } from "react";
-import details from "../../../Services/data.js";
+import restaurants_details from '../../../Services/restaurant-data';
+import useScrollLevel from "../../../Services/useScrollLevel";
 import {
     Select,
     SelectContent,
@@ -12,18 +11,7 @@ import {
 function RestaurantCards() {
 
   // to make a shadow for the filter section, when scrolled to a particular distance  
-    const [scrollY, setScrollY] = useState(0)
-
-    const handleScroll = () => {
-        setScrollY(window.scrollY);
-    }
-
-    useEffect(()=> {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', () => {})
-        }
-    },[])
+  const scrollY = useScrollLevel()
     
   return (
     <div className="">
@@ -34,7 +22,7 @@ function RestaurantCards() {
         ">Top Restaurants in Bangalore
       </div>
       <div className={`filters sticky top-0 h-[4rem] w-full bg-white px-0 xl:px-[10rem] mb-43 z-20 flex items-center 
-        ${scrollY > 100 && "shadow-md" }`} >
+        ${scrollY > 370 && "shadow-md" }`} >
         <ul className="flex items-center gap-3 overflow-x-scroll">
           <li className="cursor-pointer ml-5 lg:ml-0">
             <Select>
@@ -70,8 +58,8 @@ function RestaurantCards() {
         lg:grid lg:grid-cols-3 lg:gap-8
         xl:grid xl:grid-cols-4 xl:gap-8 xl:px-[10rem]
       ">
-        {details && details.length > 0
-          ? details.map((item) => (
+        {restaurants_details && restaurants_details.length > 0
+          ? restaurants_details.map((item) => (
               <div className="group item-card cursor-pointer" key={item.id}>
                 <div className="img-box w-full relative overflow-hidden rounded-2xl
                     h-[11rem]
