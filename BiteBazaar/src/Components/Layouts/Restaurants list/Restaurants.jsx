@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 import restaurants_details from '../../../Services/restaurant-data';
-import useScrollLevel from "../../../Services/useScrollLevel";
+import useScrollLevel from "../../../Hooks/useScrollLevel";
 import {
     Select,
     SelectContent,
@@ -21,7 +22,7 @@ function RestaurantCards() {
         px-5 xl:px-[10rem]
         ">Top Restaurants in Bangalore
       </div>
-      <div className={`filters sticky top-0 h-[4rem] w-full bg-white px-0 xl:px-[10rem] mb-43 z-20 flex items-center 
+      <div className={`filters sticky top-[6rem] lg:top-[4rem] h-[4rem] w-full bg-white px-0 xl:px-[10rem] mb-43 z-20 flex items-center 
         ${scrollY > 370 && "shadow-md" }`} >
         <ul className="flex items-center gap-3 overflow-x-scroll">
           <li className="cursor-pointer ml-5 lg:ml-0">
@@ -60,7 +61,9 @@ function RestaurantCards() {
       ">
         {restaurants_details && restaurants_details.length > 0
           ? restaurants_details.map((item) => (
-              <div className="group item-card cursor-pointer" key={item.id}>
+            <Link to={`/restaurant/${item.id}`} key={item.id}>
+            
+              <div className="group item-card cursor-pointer">
                 <div className="img-box w-full relative overflow-hidden rounded-2xl
                     h-[11rem]
                     xl:h-[12rem]
@@ -69,7 +72,7 @@ function RestaurantCards() {
                     bg-gradient-to-t from-gray-800 from-5% via-transparent to-transparent"></div>
                   <img src={item.image} alt=""
                     className="h-full w-full object-cover z-0
-                    group-hover:scale-105 transition delay-100 ease-in-out
+                    group-hover:scale-105 transition duration-500 ease-in-out
                   "/>
                 </div>
 
@@ -78,10 +81,11 @@ function RestaurantCards() {
                     <span className="font-bold text-lg lg:text-lg">{item.name}</span>
                     <span className="px-2 text-white bg-green-500 rounded-sm">{item.rating} <i className="ri-star-fill"></i></span>
                   </div>
-                  <span className="text-gray-400 text-sm lg:text-md">{item.food_types}</span>
+                  <span className="text-gray-400 text-sm lg:text-md">{item.food_types.join(', ')}</span>
                   <span className="text-gray-400 text-sm lg:text-md">{item.location}</span>
                 </div>
               </div>
+            </Link>
             ))
           : null}
       </div>
